@@ -51,18 +51,20 @@ func main() {
 	}
 	l := float64(len(Data))
 	average := sum / l
-	fmt.Printf("Average: %.0f\n", average)
+	r := math.Round(average)
+	fmt.Printf("Average: %.0f\n", r)
 
 	// calcul Median
 	var median float64
 	slices.Sort(Data)
 	n := len(Data)
 	if n%2 == 0 {
-		median = (Data[n/2-1] + Data[(n-1)/2]) / 2
+		median = (Data[(n/2)-1] + Data[n/2]) / 2
 	} else {
 		median = Data[n/2]
 	}
-	fmt.Printf("Median: %.0f\n", median)
+	r1 := math.Round(median)
+	fmt.Printf("Median: %.0f\n", r1)
 
 	// calcul Variance
 	// var = 1/sum * Loop(xi - E(x))^2
@@ -74,10 +76,12 @@ func main() {
 	}
 	SecondRawMoment := seg / float64(len(Data))
 	variance := SecondRawMoment - mean
-
-	fmt.Printf("variance: %.0f\n", variance)
+	r2 := math.Round(variance)
+	fmt.Printf("variance: %.0f\n", r2)
 
 	// calculate the standard Deviation
 	StandardDeviation := math.Sqrt(variance)
-	fmt.Printf("Standard Deviation: %.0f\n", StandardDeviation)
+	r3 := math.Round(StandardDeviation)
+	fmt.Printf("Standard Deviation: %.0f\n", r3)
 }
+
